@@ -28,7 +28,7 @@
           SpecificationFiles="@(NukeSpecFiles)"
           BaseDirectory="$(NukeBaseDirectory)"
           UseNestedNamespaces="$(NukeUseNestedNamespaces)"
-          BaseNamespace="$(NukeBaseNamespace)"
+          BaseNamespace="$(AssemblyName)"
           UpdateReferences="$(NukeUpdateReferences)"/>
     </Target>
     
