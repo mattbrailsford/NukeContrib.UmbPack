@@ -33,7 +33,6 @@ class Build : NukeBuild
     [Parameter] readonly string NuGetApiKey;
 
     [Solution] readonly Solution Solution;
-    [GitRepository] readonly GitRepository GitRepository;
     [GitVersion] readonly GitVersion GitVersion;
 
     AbsolutePath SourceDirectory => RootDirectory / "src";
@@ -87,7 +86,6 @@ class Build : NukeBuild
         .Requires(() => NuGetApiUrl)
         .Requires(() => NuGetApiKey)
         .Requires(() => Configuration.Equals(Configuration.Release))
-        .Requires(() => GitRepository.Branch.StartsWith("refs/tags/v"))
         .Executes(() =>
         {
             GlobFiles(ArtifactsDirectory, "*.nupkg")
