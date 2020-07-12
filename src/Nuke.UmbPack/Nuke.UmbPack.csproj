@@ -20,7 +20,9 @@
     </ItemGroup>
 
     <ItemGroup>
-        <NukeSpecificationFiles Include="Specifications\*.json" />
+        <NukeSpecificationFiles Include="Specifications\*.json">
+            <GitVersion />
+        </NukeSpecificationFiles>
     </ItemGroup>
     
 </Project>
