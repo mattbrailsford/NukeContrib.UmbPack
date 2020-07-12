@@ -19,7 +19,7 @@ using static Nuke.Common.Tools.DotNet.DotNetTasks;
 [UnsetVisualStudioEnvironmentVariables]
 [GitHubActions(
     "main",
-    GitHubActionsImage.WindowsLatest,
+    GitHubActionsImage.UbuntuLatest,
     OnPushTags = new[] { "v*" },
     InvokedTargets = new[] { nameof(Push) },
     ImportSecrets = new[] { nameof(NuGetApiKey) })]
