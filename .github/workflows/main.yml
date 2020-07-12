@@ -18,13 +18,13 @@ name: main
 
 on:
   push:
-    tags:
-      - v*
+    branches:
+      - main
 
 jobs:
-  windows-latest:
-    name: windows-latest
-    runs-on: windows-latest
+  ubuntu-latest:
+    name: ubuntu-latest
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
       - name: Run './build.cmd Push'

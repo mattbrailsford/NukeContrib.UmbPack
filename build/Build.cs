@@ -20,7 +20,7 @@ using static Nuke.Common.Tools.DotNet.DotNetTasks;
 [GitHubActions(
     "main",
     GitHubActionsImage.UbuntuLatest,
-    OnPushTags = new[] { "v*" },
+    OnPushBranches = new[] { "main" },
     InvokedTargets = new[] { nameof(Push) },
     ImportSecrets = new[] { nameof(NuGetApiKey) })]
 class Build : NukeBuild
