@@ -9,10 +9,10 @@
         <PackageIconUrl>https://raw.githubusercontent.com/nuke-build/nuke/master/icon.png</PackageIconUrl>
         <RepositoryUrl>https://github.com/mattbrailsford/Nuke.UmbPack</RepositoryUrl>
         <RepositoryType>git</RepositoryType>
-        <PackageId>Nuke.UmbPack</PackageId>
+        <PackageId>NukeContrib.UmbPack</PackageId>
         <PackageTags>umbraco, nukebuild, nuke</PackageTags>
         <Description>UmbPack wrapper for NUKE</Description>
-        <AssemblyName>Nuke.UmbPack</AssemblyName>
+        <AssemblyName>NukeContrib.UmbPack</AssemblyName>
     </PropertyGroup>
 
     <ItemGroup>

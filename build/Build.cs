@@ -38,7 +38,7 @@ class Build : NukeBuild
     AbsolutePath SourceDirectory => RootDirectory / "src";
     AbsolutePath ArtifactsDirectory => RootDirectory / "artifacts";
 
-    private string ProjectId => "Nuke.UmbPack";
+    private string ProjectId => "NukeContrib.UmbPack";
 
     Target Clean => _ => _
         .Before(Restore)
