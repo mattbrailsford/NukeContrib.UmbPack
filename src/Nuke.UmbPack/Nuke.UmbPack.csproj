@@ -20,9 +20,16 @@
     </ItemGroup>
 
     <ItemGroup>
-        <NukeSpecificationFiles Include="Specifications\*.json">
-            <GitVersion />
-        </NukeSpecificationFiles>
+        <NukeSpecFiles Include="Specifications\*.json" />
     </ItemGroup>
+
+    <Target Name="NukeSpecCodeGeneration" BeforeTargets="CoreCompile" Condition="'$(CI)' == '' AND '@(NukeSpecFiles)' != ''">
+        <CodeGenerationTask
+          SpecificationFiles="@(NukeSpecFiles)"
+          BaseDirectory="$(NukeBaseDirectory)"
+          UseNestedNamespaces="$(NukeUseNestedNamespaces)"
+          BaseNamespace="$(NukeBaseNamespace)"
+          UpdateReferences="$(NukeUpdateReferences)"/>
+    </Target>
     
 </Project>
