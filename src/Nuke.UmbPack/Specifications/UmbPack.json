@@ -1,0 +1,83 @@
+{
+  "$schema": "https://raw.githubusercontent.com/nuke-build/nuke/master/source/Nuke.CodeGeneration/schema.json",
+  "name": "UmbPack",
+  "officialUrl": "https://github.com/umbraco/UmbPack",
+  "help": "UmbPack is a CLI tool to use in CI/CD to upload Umbraco .zip packages to the our.umbraco.com package repository.",
+  "packageId": "Umbraco.Tools.Packages",
+  "packageExecutable": "UmbPack.dll",
+  "tasks": [
+    {
+      "postfix": "Pack",
+      "definiteArgument": "pack",
+      "settingsClass": {
+        "properties": [
+          {
+            "name": "TargetPath",
+            "type": "string",
+            "format": "{value}",
+            "help": "The package.xml file or folder you want to create your package from"
+          },
+          {
+            "name": "OutputDirectory",
+            "type": "string",
+            "format": "-o {value}",
+            "help": "The directory the created package will be saved to"
+          },
+          {
+            "name": "Version",
+            "type": "string",
+            "format": "-v {value}",
+            "help": "Override the version defined in the package.xml file"
+          }
+        ]
+      }
+    },
+    {
+      "postfix": "Push",
+      "definiteArgument": "push",
+      "settingsClass": {
+        "properties": [
+          {
+            "name": "TargetPath",
+            "type": "string",
+            "format": "{value}",
+            "help": "Path to the package.zip file you wish to push"
+          },
+          {
+            "name": "ApiKey",
+            "type": "string",
+            "format": "-k {value}",
+            "secret": true,
+            "help": "Api Key to use"
+          },
+          {
+            "name": "DotNetVersion",
+            "type": "string",
+            "format": "-DotNetVersion {value}",
+            "help": "Change the required DotNetVersion for the package"
+          },
+          {
+            "name": "Current",
+            "type": "bool",
+            "format": "-c {value}",
+            "help": "Make this package the current package file"
+          },
+          {
+            "name": "WorksWith",
+            "type": "List<string>",
+            "format": "-w {value}",
+            "separator": ",",
+            "help": "Compatible Umbraco versions"
+          },
+          {
+            "name": "Archive",
+            "type": "List<string>",
+            "format": "-a {value}",
+            "separator": " ",
+            "help": "One or more wildcard patterns to match against existing package files to be archived"
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,6 @@
+mode: ContinuousDeployment
+branches:
+  master:
+    regex: ^ma[ster|in]
+  pull-request:
+    regex: ^(pull|pull\-requests|pr|patch)[/-]
