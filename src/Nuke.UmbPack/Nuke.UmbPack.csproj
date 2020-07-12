@@ -1,0 +1,26 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>netcoreapp2.1</TargetFramework>
+        <Authors>Matt Brailsford</Authors>
+        <Copyright>(c) $([System.DateTime]::Now.Year) Matt Brailsford</Copyright>
+        <PackageLicenseExpression>MIT</PackageLicenseExpression>
+        <PackageProjectUrl>https://github.com/mattbrailsford/Nuke.UmbPack</PackageProjectUrl>
+        <PackageIconUrl>https://raw.githubusercontent.com/nuke-build/nuke/master/icon.png</PackageIconUrl>
+        <RepositoryUrl>https://github.com/mattbrailsford/Nuke.UmbPack</RepositoryUrl>
+        <RepositoryType>git</RepositoryType>
+        <PackageId>Nuke.UmbPack</PackageId>
+        <PackageTags>umbraco, nukebuild, nuke</PackageTags>
+        <Description>UmbPack wrapper for NUKE</Description>
+        <AssemblyName>Nuke.UmbPack</AssemblyName>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Nuke.Common" Version="0.24.11" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <NukeSpecificationFiles Include="Specifications\*.json" />
+    </ItemGroup>
+    
+</Project>
