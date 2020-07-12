@@ -19,7 +19,7 @@ using static Nuke.Common.Tools.DotNet.DotNetTasks;
 [UnsetVisualStudioEnvironmentVariables]
 [GitHubActions(
     "main",
-    GitHubActionsImage.WindowsLatest,
+    GitHubActionsImage.UbuntuLatest,
     OnPushTags = new[] { "v*" },
     InvokedTargets = new[] { nameof(Push) },
     ImportSecrets = new[] { nameof(NuGetApiKey) })]
@@ -33,13 +33,12 @@ class Build : NukeBuild
     [Parameter] readonly string NuGetApiKey;
 
     [Solution] readonly Solution Solution;
-    [GitRepository] readonly GitRepository GitRepository;
     [GitVersion] readonly GitVersion GitVersion;
 
     AbsolutePath SourceDirectory => RootDirectory / "src";
     AbsolutePath ArtifactsDirectory => RootDirectory / "artifacts";
 
-    private string ProjectId => "Nuke.UmbPack";
+    private string ProjectId => "NukeContrib.UmbPack";
 
     Target Clean => _ => _
         .Before(Restore)
@@ -87,7 +86,6 @@ class Build : NukeBuild
         .Requires(() => NuGetApiUrl)
         .Requires(() => NuGetApiKey)
         .Requires(() => Configuration.Equals(Configuration.Release))
-        .Requires(() => GitRepository.Branch.StartsWith("refs/tags/v"))
         .Executes(() =>
         {
             GlobFiles(ArtifactsDirectory, "*.nupkg")
