@@ -16,7 +16,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 
-namespace NukeContrib.UmbPack
+namespace NukeContrib.UmbPack.Tools
 {
     /// <summary>
     ///   <p>UmbPack is a CLI tool to use in CI/CD to upload Umbraco .zip packages to the our.umbraco.com package repository.</p>

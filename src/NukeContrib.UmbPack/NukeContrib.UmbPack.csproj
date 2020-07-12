@@ -26,9 +26,9 @@
     <Target Name="NukeSpecCodeGeneration" BeforeTargets="CoreCompile" Condition="'$(CI)' == '' AND '@(NukeSpecFiles)' != ''">
         <CodeGenerationTask
           SpecificationFiles="@(NukeSpecFiles)"
-          BaseDirectory="$(NukeBaseDirectory)"
+          BaseDirectory="$(NukeBaseDirectory)/Tools"
           UseNestedNamespaces="$(NukeUseNestedNamespaces)"
-          BaseNamespace="$(AssemblyName)"
+          BaseNamespace="$(AssemblyName).Tools"
           UpdateReferences="$(NukeUpdateReferences)"/>
     </Target>
     
