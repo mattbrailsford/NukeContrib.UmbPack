@@ -1,4 +1,4 @@
-// Generated from https://raw.githubusercontent.com/mattbrailsford/NukeContrib.UmbPack/dev/src/NukeContrib.UmbPack/Specifications/UmbPack.json
+// Generated from https://raw.githubusercontent.com/mattbrailsford/NukeContrib.UmbPack/main/src/NukeContrib.UmbPack/Specifications/UmbPack.json
 
 using JetBrains.Annotations;
 using Newtonsoft.Json;
