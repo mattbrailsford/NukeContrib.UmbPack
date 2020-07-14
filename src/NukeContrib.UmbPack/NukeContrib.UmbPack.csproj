@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
-        <TargetFramework>netcoreapp2.1</TargetFramework>
+        <TargetFramework>netcoreapp3.0</TargetFramework>
         <Authors>Matt Brailsford</Authors>
         <Copyright>(c) $([System.DateTime]::Now.Year) Matt Brailsford</Copyright>
         <PackageLicenseExpression>MIT</PackageLicenseExpression>
@@ -16,20 +16,15 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="Nuke.Common" Version="0.24.11" />
+        <PackageReference Include="Nuke.Common" Version="0.25.0-alpha0334" />
     </ItemGroup>
 
     <ItemGroup>
         <NukeSpecFiles Include="Specifications\*.json" />
     </ItemGroup>
 
-    <Target Name="NukeSpecCodeGeneration" BeforeTargets="CoreCompile" Condition="'$(CI)' == '' AND '@(NukeSpecFiles)' != ''">
-        <CodeGenerationTask
-          SpecificationFiles="@(NukeSpecFiles)"
-          BaseDirectory="$(NukeBaseDirectory)"
-          UseNestedNamespaces="$(NukeUseNestedNamespaces)"
-          BaseNamespace="$(AssemblyName)"
-          UpdateReferences="$(NukeUpdateReferences)"/>
+    <Target Name="NukeSpecCodeGeneration" BeforeTargets="CoreCompile" Condition="'@(NukeSpecFiles)' != ''">
+        <CodeGenerationTask SpecificationFiles="@(NukeSpecFiles)" BaseDirectory="$(NukeBaseDirectory)/Tools" UseNestedNamespaces="$(NukeUseNestedNamespaces)" BaseNamespace="$(AssemblyName).Tools" UpdateReferences="$(NukeUpdateReferences)" />
     </Target>
     
 </Project>
