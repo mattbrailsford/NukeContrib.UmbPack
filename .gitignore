@@ -200,3 +200,5 @@ Thumbs.db
 ehthumbs.db
 Desktop.ini
 Source/.vs/config/applicationhost.config
+
+*.generated.cs
