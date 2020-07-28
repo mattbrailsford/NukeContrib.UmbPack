@@ -28,7 +28,7 @@ class Build : NukeBuild
     public static int Main () => Execute<Build>(x => x.Pack);
 
     [Parameter("Configuration to build - Default is 'Debug' (local) or 'Release' (server)")]
-    readonly Configuration Configuration = IsLocalBuild ? Configuration.Debug : Configuration.Release;
+    readonly string Configuration = IsLocalBuild ? "Debug" : "Release";
 
     [Parameter] readonly string NuGetApiUrl = "https://api.nuget.org/v3/index.json";
     [Parameter] readonly string NuGetApiKey;
@@ -86,7 +86,7 @@ class Build : NukeBuild
         .DependsOn(Pack)
         .Requires(() => NuGetApiUrl)
         .Requires(() => NuGetApiKey)
-        .Requires(() => Configuration.Equals(Configuration.Release))
+        .Requires(() => Configuration.Equals("Release"))
         .Executes(() =>
         {
             GlobFiles(ArtifactsDirectory, "*.nupkg")
