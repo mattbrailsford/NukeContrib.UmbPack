@@ -24,7 +24,8 @@ using static Nuke.Common.Tools.DotNet.DotNetTasks;
     InvokedTargets = new[] { nameof(Push) },
     ImportSecrets = new[] { nameof(NuGetApiKey) })]
 class Build : NukeBuild
-{    public static int Main () => Execute<Build>(x => x.Pack);
+{    
+    public static int Main () => Execute<Build>(x => x.Pack);
 
     [Parameter("Configuration to build - Default is 'Debug' (local) or 'Release' (server)")]
     readonly Configuration Configuration = IsLocalBuild ? Configuration.Debug : Configuration.Release;

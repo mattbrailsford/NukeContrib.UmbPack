@@ -28,6 +28,12 @@
             "type": "string",
             "format": "-v {value}",
             "help": "Override the version defined in the package.xml file"
+          },
+          {
+            "name": "PackageFileName",
+            "type": "string",
+            "format": "-n {value}",
+            "help": "Override the generated package file name"
           }
         ]
       }
