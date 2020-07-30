@@ -14,7 +14,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Nuke.Common" Version="0.25.0-alpha0334" />
+    <PackageReference Include="Nuke.Common" Version="0.24.11" />
   </ItemGroup>
 
 </Project>

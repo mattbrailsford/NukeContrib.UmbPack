@@ -37,9 +37,9 @@ namespace NukeContrib.UmbPack.Tools
         ///   <p>UmbPack is a CLI tool to use in CI/CD to upload Umbraco .zip packages to the our.umbraco.com package repository.</p>
         ///   <p>For more details, visit the <a href="https://github.com/umbraco/UmbPack">official website</a>.</p>
         /// </summary>
-        public static IReadOnlyCollection<Output> UmbPack(string arguments, string workingDirectory = null, IReadOnlyDictionary<string, string> environmentVariables = null, int? timeout = null, bool? logOutput = null, bool? logInvocation = null, bool? logTimestamp = null, string logFile = null, Func<string, string> outputFilter = null)
+        public static IReadOnlyCollection<Output> UmbPack(string arguments, string workingDirectory = null, IReadOnlyDictionary<string, string> environmentVariables = null, int? timeout = null, bool? logOutput = null, bool? logInvocation = null, Func<string, string> outputFilter = null)
         {
-            using var process = ProcessTasks.StartProcess(UmbPackPath, arguments, workingDirectory, environmentVariables, timeout, logOutput, logInvocation, logTimestamp, logFile, UmbPackLogger, outputFilter);
+            var process = ProcessTasks.StartProcess(UmbPackPath, arguments, workingDirectory, environmentVariables, timeout, logOutput, logInvocation, UmbPackLogger, outputFilter);
             process.AssertZeroExitCode();
             return process.Output;
         }
@@ -59,7 +59,7 @@ namespace NukeContrib.UmbPack.Tools
         public static IReadOnlyCollection<Output> UmbPackPack(UmbPackPackSettings toolSettings = null)
         {
             toolSettings = toolSettings ?? new UmbPackPackSettings();
-            using var process = ProcessTasks.StartProcess(toolSettings);
+            var process = ProcessTasks.StartProcess(toolSettings);
             process.AssertZeroExitCode();
             return process.Output;
         }
@@ -115,7 +115,7 @@ namespace NukeContrib.UmbPack.Tools
         public static IReadOnlyCollection<Output> UmbPackPush(UmbPackPushSettings toolSettings = null)
         {
             toolSettings = toolSettings ?? new UmbPackPushSettings();
-            using var process = ProcessTasks.StartProcess(toolSettings);
+            var process = ProcessTasks.StartProcess(toolSettings);
             process.AssertZeroExitCode();
             return process.Output;
         }

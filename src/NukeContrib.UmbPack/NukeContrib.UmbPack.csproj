@@ -6,7 +6,7 @@
         <Copyright>(c) $([System.DateTime]::Now.Year) Matt Brailsford</Copyright>
         <PackageLicenseExpression>MIT</PackageLicenseExpression>
         <PackageProjectUrl>https://github.com/mattbrailsford/Nuke.UmbPack</PackageProjectUrl>
-        <PackageIconUrl>https://raw.githubusercontent.com/nuke-build/nuke/master/icon.png</PackageIconUrl>
+        <PackageIcon>icon.png</PackageIcon>
         <RepositoryUrl>https://github.com/mattbrailsford/Nuke.UmbPack</RepositoryUrl>
         <RepositoryType>git</RepositoryType>
         <PackageId>NukeContrib.UmbPack</PackageId>
@@ -16,14 +16,15 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="Nuke.Common" Version="0.25.0-alpha0334" />
-    </ItemGroup>
-
-    <ItemGroup>
+        <None Include="..\..\assets\icon.png" Pack="true" PackagePath=""/>
         <NukeSpecFiles Include="Specifications\*.json" />
     </ItemGroup>
 
-    <Target Name="NukeSpecCodeGeneration" BeforeTargets="CoreCompile" Condition="'@(NukeSpecFiles)' != ''">
+    <ItemGroup>
+      <PackageReference Include="Nuke.Common" Version="0.24.11" />
+    </ItemGroup>
+
+    <Target Name="NukeSpecCodeGeneration" BeforeTargets="CoreCompile" Condition="'@(NukeSpecFiles)' != '' And '$(CI)' != 'true'">
         <CodeGenerationTask SpecificationFiles="@(NukeSpecFiles)" BaseDirectory="$(NukeBaseDirectory)/Tools" UseNestedNamespaces="$(NukeUseNestedNamespaces)" BaseNamespace="$(AssemblyName).Tools" UpdateReferences="$(NukeUpdateReferences)" />
     </Target>
     
